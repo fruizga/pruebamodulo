@@ -54,12 +54,12 @@ void gettoken(char *string, stack_t **stack, unsigned int line_number)
   token = strtok(string, " ");
 
   if (*token == ' ' || *token == '\n' || token == NULL)
-  { return; }
+  {return; }
 
   if (strcmp(token, "push") == 0)
   {
     tmp = token;
-    token = strtok(NULL, " ");
+    token = strtok(NULL, "");
     if (!esnum(token))
     {
       fprintf(stderr, "ah vaina\n");
@@ -95,6 +95,7 @@ int esnum(char *token)
     {
       return (0);
     }
+		token++;
   }
   token++;
   return (1);

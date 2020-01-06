@@ -6,14 +6,17 @@
 */
 void tan_opcode(char *token, stack_t **stack, unsigned int line_number)
 {
-  int i = 0;
+  int i;
 
   instruction_t hugo_norzobia[] = {
     {"push", push},
-    {NULL, NULL}
+    {"pall", pall},
+    {"add", add},
+    {"pop", pop},
+        {NULL, NULL}
   };
 
-  for (; hugo_norzobia[i].opcode != NULL; i++)
+  for (i = 0; hugo_norzobia[i].opcode != NULL; i++)
   {
     if (strcmp(token, hugo_norzobia[i].opcode) == 0)
     {

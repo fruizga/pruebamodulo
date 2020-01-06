@@ -6,7 +6,7 @@
 */
 void push(stack_t **stack, unsigned int line_number)
 {
-  stack_t *new_nodo;
+  stack_t *new_nodo = NULL;
 
   if (!stack)
   {
@@ -49,4 +49,38 @@ void pall(stack_t **stack, unsigned int line_number)
     printstack = printstack->next;
   }
 
+}
+
+void add(stack_t **stack, unsigned int line_number)
+{
+  int sum;
+
+  if (!stack || (*stack)->next == NULL)
+  {
+    fprintf(stderr, "error\n");
+    exit (EXIT_FAILURE);
+  }
+
+  sum = (*stack)->n;
+  pop(stack, line_number);
+  (*stack)->n += sum;
+}
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+  stack_t *aux = *stack;
+
+  if (!stack)
+  {
+    fprintf(stderr, "error %d\n", line_number);
+    exit (EXIT_FAILURE);
+  }
+
+  *stack = (*stack)->next;
+  free(aux);
+
+  if (*stack)
+  {
+    (*stack)->prev= NULL;
+  }
 }
