@@ -36,15 +36,8 @@ char *read_textfile(const char *filename, ssize_t val)
 		free(buff_de_mier);
 		return (0);
 	}
-	/*imprimidor = write(STDOUT_FILENO, buff_de_mier, lector);
-	if (imprimidor == -1)
-	{
-		free(buff_de_mier);
-		return (0);
-	}
-	close(fd);*/
-
-
+	
+	close(fd);
 	return (buff_de_mier);
 
 }

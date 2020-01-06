@@ -6,10 +6,9 @@
  */
 char **strtoken(char *string)
 {
-char *token, *tkn2, *tpm;
+char *token, **funcion;
 int buffer = 64, i = 0, j= 0, k = 0, l = 0;
 char **array = malloc((buffer) * sizeof(char *));
-char **array2 = malloc((buffer) * sizeof(char *));
 
 if (array == NULL)
 	return (NULL);
@@ -32,36 +31,94 @@ while (token)
 	i++;
 }
 array[i] = NULL;
-/*2nd tokenizer*
 
-tpm = *array;
-
-while (tpm[k] != '\0')
-{
-	tkn2 = strtok(tpm[k], " ");
-	k++;
-}
-
-while (tkn2)
-{
-	array2[l] = malloc(_strlen(tkn2) + 1);
-	if (array2[l] == NULL)
-	{
-		free(array2);
-		return (NULL);
-	}
-	_strncpy(array2[l], tkn2, _strlen(tkn2) + 1);
-	tkn2 = strtok(NULL, " ");
-	l++;
-}
-array[l] = NULL;*/
-/*
-while (array[j] != '\0')
-{
-    printf("%s\n", array[j]);
-
-		j++;
-}*/
 printf("\n");
-return (array);
+
+prepare_array(array);
+
+return (0);
+}
+
+/**
+ * prepare_array - single pointer to partial tokens
+ * @string: array of partial tokens
+ * Return: a prepared array of tokens
+ */
+
+char *prepare_array(char **array)
+{
+	int i = 0;
+	char *aux_token;
+
+	if(array == NULL)
+		return (NULL);
+	
+	while (array[i] != '\0')
+	{
+		aux_token[i] = *array[i];
+	i++;
+	}
+	second_token(aux_token);
+	return (0);
+	
+}
+
+/**
+ * second_token - single pointer to partial tokens
+ * @aux_token: array of tokens
+ * Return: array of stack and queues operations
+ */
+
+char **second_token(char *aux_token)
+{
+	char *token;
+	int buffer = 64, i = 0, j= 0, k = 0, l = 0;
+	char **array2 = malloc((buffer) * sizeof(char *));
+
+	if (array2 == NULL)
+		return (NULL);
+
+	token = strtok(aux_token, " ");
+
+	while (token)
+	{
+
+		array2[i] = malloc(_strlen(token) + 1);
+
+		/*if (array[i] == NULL)
+		{
+			free(array);
+			return (NULL);
+		}*/
+		_strncpy(array2[i], token, _strlen(token) + 1);
+		printf("Array en %d es : %s\n", i, token);
+		token = strtok(NULL, " ");
+		i++;
+	}
+	array2[i] = NULL;
+
+	printf("\n");
+	print_token(array2);
+
+	return (0);	
+}
+
+/**
+ * print_token - single pointer to partial tokens
+ * @array2: array of tokens
+ * Return: array of stack and queues operations
+ */
+
+void print_token(char **array2)
+{
+	int i = 0;
+
+	if(array2 == NULL)
+		printf("NULL");
+
+	while (array2)
+	{
+		printf("%s", array2[i]);
+		i++;
+	}
 }

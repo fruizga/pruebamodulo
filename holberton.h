@@ -20,6 +20,9 @@ char **strtoken(char *string);
 char *_strncpy(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 unsigned int _strlen(char *str);
+char *prepare_array(char **string);
+char **second_token(char *aux_token);
+void print_token(char **array2);
 
 
 
