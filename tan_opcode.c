@@ -1,31 +1,32 @@
 #include "holberton.h"
 /**
-*
-*
-*
+*tan_opcode - select operation from structure
+*@token: token
+*@stack: stack
+*@line_number: line_number
 */
 void tan_opcode(char *token, stack_t **stack, unsigned int line_number)
 {
-  int i;
+int i;
 
-  instruction_t hugo_norzobia[] = {
-    {"push", push},
-    {"pall", pall},
-    {"add", add},
-    {"pop", pop},
-        {NULL, NULL}
-  };
+instruction_t hugo_norzobia[] = {
+{"push", push},
+{"pall", pall},
+{"add", add},
+{"pop", pop},
+{NULL, NULL}
+};
 
-  for (i = 0; hugo_norzobia[i].opcode != NULL; i++)
-  {
-    if (strcmp(token, hugo_norzobia[i].opcode) == 0)
-    {
-      hugo_norzobia[i].f(stack, line_number);
-      return;
-    }
-  }
+for (i = 0; hugo_norzobia[i].opcode != NULL; i++)
+{
+if (strcmp(token, hugo_norzobia[i].opcode) == 0)
+{
+hugo_norzobia[i].f(stack, line_number);
+return;
+}
+}
 
-  fprintf(stderr, "jajaja\n");
-  //liberar stack
-  exit (EXIT_FAILURE);
+fprintf(stderr, "L%u: unknown instruction %s\n", lnum, tkn);
+/*liberar stack*/
+exit(EXIT_FAILURE);
 }
